@@ -28,11 +28,12 @@ public class ArrayStack<T> {
    
    public T peek() {
        
-       System.out.println(stack[topIndex]);
+       //System.out.println(stack[topIndex]);
        return stack[topIndex];
    } 
    public void push(T newEntry) {
        topIndex++;
+       //System.out.println(topIndex);
        stack[topIndex]= newEntry;
    }
    
@@ -43,24 +44,13 @@ public class ArrayStack<T> {
        return temp;
    }
    
-   
-   
-   public static void main(String Args[]) {
-       ArrayStack<Integer> as = new ArrayStack<Integer>();
-       as.push(1);
-       as.push(2);
-       as.push(3);
-       as.push(4);
-       as.push(5);
-       as.push(6);
-       
-       
-       
-       as.pop();
-       as.pop();as.pop();as.pop();as.pop();as.pop(); as.pop();
-               
-       
+   public void clear() {
+       while(topIndex >= 0) {
+           System.out.println(pop());
+       }
    }
-
+   
+   
+  
 } // end ArrayStack
 
