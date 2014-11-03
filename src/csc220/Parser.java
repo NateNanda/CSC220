@@ -11,21 +11,73 @@ public class Parser {
             nextCharacter = expression.charAt(index);
             index++;
             switch(nextCharacter) {
-                case '+':
-                    operands.push(nextCharacter);
-                    break;
                case '0':case '1':case '2':case '3':case '4':
                case '5':case '6':case '7':case '8':case '9':
                    values.push(Character.getNumericValue(nextCharacter));
                    break;
+               case '^':
+                   operands.push(nextCharacter);
+                   break;
+               case '*': case'/':case '+': case '-':
+                    while(!operands.isEmpty() 
+                          && precedence(nextCharacter) <= 
+                            precedence(operands.peek()) )
+                
+                    operands.push(nextCharacter);
+                    break;
+              
                                }
         }
-        values.clear();
-        operands.clear();
         return 1;
     }
+    
+    public static int precedence(char operator) {
+        int precedence =0;
+        switch(operator) {
+            case '+':
+                precedence = 0;
+                break;
+            case '-':
+                precedence = 0;
+                break;
+            case '*':
+                precedence = 1;
+                break;
+            case '/':
+                precedence = 1;
+                break;
+            case '^':
+                precedence = 2;
+                break;
+        }
+        return precedence;
+
+    }
+    
+    private static int compute(int op1, int op2, char operator) {
+       int result = 0;
+        switch(operator) {
+            case '-':
+                result = op1 - op2;
+                break;
+             case '+':
+                 result = op1 + op2;
+                 break;
+             case '*':
+                result = op1 * op2;
+                break;
+            case '/':
+                result = op1/op2;
+                break;
+            case '^':
+                result = (int) Math.pow(op1, op2);
+                break;
+        }
+        return result;
+    } 
     public static void main ( String[] args) {
-        parse("2+3");
+        System.out.println(compute (3,2,'/'));
+        System.out.println(precedence ('*'));
         
     }
 

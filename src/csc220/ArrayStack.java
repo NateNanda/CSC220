@@ -48,7 +48,11 @@ public class ArrayStack<T> {
        while(topIndex >= 0) {
            System.out.println(pop());
        }
+   }//end clear
+   public boolean isEmtpty() {
+       return topIndex == -1;
    }
+       
    
    
   
