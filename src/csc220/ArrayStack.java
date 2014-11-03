@@ -54,6 +54,11 @@ public class ArrayStack<T> {
    }
        
    
+   public boolean isEmpty() {
+    return topIndex == -1; 
+   } // end isEmpty
+
+   
    
   
 } // end ArrayStack
